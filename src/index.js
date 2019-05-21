@@ -38,7 +38,7 @@ function* gen(id) {
 function sagaMiddleware() {
     return (dispatch) => {
         return (action) => {
-            //debugger
+            // 监听需要saga处理的action
             if (action.type === 'TOGGLE_TODO_ASYNC') {
                 let g = window.g = gen(action.id)
                 let p = g.next()
@@ -50,7 +50,7 @@ function sagaMiddleware() {
                 })
                 return;
             }
-            // dispatch时执行这里
+            // 原流程-dispatch时执行这里
             var result = dispatch(action);
             return result;
         };
